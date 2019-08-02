@@ -10,9 +10,37 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Meals',
       theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+          primarySwatch: Colors.pink,
+          accentColor: Colors.amber,
+          canvasColor: Color.fromRGBO(255, 254, 229, 1),
+          fontFamily: 'RaleWay',
+          textTheme: ThemeData.light().textTheme.copyWith(
+              body1: TextStyle(
+                color: Color.fromRGBO(20, 51, 51, 1),
+              ),
+              body2: TextStyle(
+                color: Color.fromRGBO(20, 51, 51, 1),
+              ),
+              title: TextStyle(
+                fontSize: 20,
+                fontFamily: 'RobotoCondensed',
+                fontWeight: FontWeight.bold,
+              ))),
       home: CategoriesScreen(),
     );
   }
-} 
+}
+
+class MainPage extends StatefulWidget {
+  @override
+  _MainPageState createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Center(
+      child: Text('Test'),
+    );
+  }
+}

@@ -11,6 +11,7 @@ class CategoriesScreen extends StatelessWidget {
         title: const Text('Meals'),
       ),
       body: GridView(
+        padding: const EdgeInsets.all(18),
         children: DEBUG_CATEGORIES.map((catData) {
           return CategoryItem(
             color: catData.color,
