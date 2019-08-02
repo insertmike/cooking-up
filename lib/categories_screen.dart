@@ -14,6 +14,7 @@ class CategoriesScreen extends StatelessWidget {
         padding: const EdgeInsets.all(18),
         children: DEBUG_CATEGORIES.map((catData) {
           return CategoryItem(
+            id: catData.id,
             color: catData.color,
             title: catData.title,
           );
