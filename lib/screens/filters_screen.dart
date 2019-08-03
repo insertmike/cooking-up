@@ -12,19 +12,19 @@ class _FiltersScreenState extends State<FiltersScreen> {
   bool _glutenFree = false;
   bool _vegeterian = false;
   bool _vegan = false;
+  bool _lactoseFree = false;
 
-  Widget buildSwitchListTile({String title, String subtitle, bool value}){
+  Widget buildSwitchListTile(
+      {String title, String subtitle, bool value, Function function}) {
     return SwitchListTile(
-                  title: Text(title),
-                  subtitle: Text(subtitle),
-                  onChanged: ((newValue) {
-                    setState(() {
-                      value = newValue;
-                    });
-                  }),
-                  value: _glutenFree,
-                );
+      title: Text(title),
+      subtitle: Text(subtitle),
+      // Update Value
+      onChanged: function,
+      value: value,
+    );
   }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -45,22 +45,43 @@ class _FiltersScreenState extends State<FiltersScreen> {
             child: ListView(
               children: <Widget>[
                 buildSwitchListTile(
-                  title: 'Gluten-free',
-                  subtitle: 'Only include gluten-free meals',
-                  value: _glutenFree,
-                ),
+                    title: 'Gluten-free',
+                    subtitle: 'Only include gluten-free meals',
+                    function: (value) {
+                      setState(() {
+                        _glutenFree = value;
+                      });
+                    },
+                    value: _glutenFree),
                 buildSwitchListTile(
-                  title: 'Vegeterian',
-                  subtitle: 'Only include vegeterian meals',
-                  value: _vegeterian,
-                ),
+                    title: 'Vegeterian',
+                    subtitle: 'Only include vegeterian meals',
+                    function: (value) {
+                      setState(() {
+                        _vegeterian = value;
+                      });
+                    },
+                    value: _vegeterian),
                 buildSwitchListTile(
                   title: 'Vegan',
                   subtitle: 'Only include vegan meals',
+                  function: (value) {
+                    setState(() {
+                      _vegan = value;
+                    });
+                  },
                   value: _vegan,
-                )
-                
-              
+                ),
+                buildSwitchListTile(
+                  title: 'Lactose',
+                  subtitle: 'Only include lactose-free meals',
+                  function: (value) {
+                    setState(() {
+                      _lactoseFree = value;
+                    });
+                  },
+                  value: _lactoseFree,
+                ),
               ],
             ),
           )
